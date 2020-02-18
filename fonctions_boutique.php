@@ -59,19 +59,43 @@ function orders_between_100_550($bdd)
     return $order_100_550;
 }
 
-// Fonction ajout d'une commande à 3 articles (ajout/modification/suppression)
+// Fonction ajout d'un article (ajout/modification/suppression)
 
-function new_order_3_articles($bdd)
+function add_new_article($bdd)
 {
-    $new_order=$bdd->query(
+    $bdd->query(
         '
-     INSERT INTO orders (numero,date,price,total_weight,Users_id) 
-     VALUES (21ML,2020.02.18,500,3,4)
-     INSERT INTO articles_orders (Articles_id, Orders_id,quantity)
-     VALUES (),(),()
+     INSERT INTO articles (name,description,price,weight,image,stock,for_sale,Categories_id) 
+     VALUES ("testPHP","un sacré test PHP",1400,2,"",2,1,3);
         '
     );
+}
 
+//// Fonction ajout d'un utilisateur (ajout/modification/suppression)
+
+function add_user($bdd,$user)
+{
+    $req=$bdd->prepare('INSERT INTO users(name,email,adress,postal_code,city)
+                        VALUES(:name,:email,:adress,:postal_code,:city)');
+    $req->execute(array(
+        ':name' => $user[0],
+        ':email' => $user[1],
+        ':adress' => $user[2],
+        ':postal_code' => $user[3],
+        ':city' => $user[4]
+    ));
+}
+
+// Fonction ajout d'une catégorie (ajout/modification/suppression))
+
+function add_new_category($bdd)
+{
+    $bdd->query(
+        '
+     INSERT INTO categories (id,name) 
+     VALUES (4,"orangina");
+        '
+    );
 }
 
 ?>
