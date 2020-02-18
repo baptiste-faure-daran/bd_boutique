@@ -1,8 +1,7 @@
 <?php
 try {
     $bdd = new PDO('mysql:host=localhost;dbname=bd_boutique', 'baptiste556', 'lemollard556');
-}
-catch (Exception $e) {
+} catch (Exception $e) {
     die('Erreur : ' . $e->getMessage());
 }
 
@@ -20,7 +19,7 @@ function select_list_of_products($bdd)
 
 function orders_from_the_last_10_days($bdd)
 {
-    $last_10_days_orders=$bdd->query(
+    $last_10_days_orders = $bdd->query(
         'SELECT * FROM orders WHERE date>(NOW() - INTERVAL 10 day)'
     );
     return $last_10_days_orders;
@@ -30,7 +29,7 @@ function orders_from_the_last_10_days($bdd)
 
 function total_price_orders($bdd)
 {
-    $total_price=$bdd->query(
+    $total_price = $bdd->query(
         '
     SELECT SUM(articles.price*articles_orders.quantity) as total, articles_orders.Orders_id 
     FROM articles_orders 
@@ -46,7 +45,7 @@ function total_price_orders($bdd)
 
 function orders_between_100_550($bdd)
 {
-    $order_100_550=$bdd->query(
+    $order_100_550 = $bdd->query(
         '
      SELECT SUM(articles.price*articles_orders.quantity) as total, articles_orders.Orders_id
      FROM articles_orders
@@ -73,9 +72,9 @@ function add_new_article($bdd)
 
 //// Fonction ajout d'un utilisateur (ajout/modification/suppression)
 
-function add_user($bdd,$user)
+function add_user($bdd, $user)
 {
-    $req=$bdd->prepare('INSERT INTO users(name,email,adress,postal_code,city)
+    $req = $bdd->prepare('INSERT INTO users(name,email,adress,postal_code,city)
                         VALUES(:name,:email,:adress,:postal_code,:city)');
     $req->execute(array(
         ':name' => $user[0],

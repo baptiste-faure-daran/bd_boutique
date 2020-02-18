@@ -7,7 +7,7 @@
     <meta name="panier.php" content="panier">
 </head>
 <?php
-include("fonctions.php");
+include("fonctions_boutique.php");
 
 if (isset($_POST["articles"])) {
     foreach ($_POST["articles"] as $articleSel) {
