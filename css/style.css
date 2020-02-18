@@ -1,0 +1,43 @@
+h1{
+    text-align: center;
+    font-size: 5em;
+    color: lightslategrey;
+}
+head{
+    font-size: large;
+    font-weight: bold;
+}
+h2{
+    font-variant: small-caps;
+    color: #04569A;
+    text-align: center;
+    font-size:2em;
+}
+
+.cadre img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width:600px;
+}
+.cadre p{
+    font-size: 1.5em;
+    font-weight: bold;
+    text-align: center;
+    color: darkblue;
+}
+span {
+    font-size: 1.8em;
+    text-decoration: underline;
+}
+.bouton{
+    display: block;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+}
+.nav{
+    position: absolute;
+    text-align: center;
+    color: #1883ba;
+}
