@@ -41,3 +41,9 @@ span {
     text-align: center;
     color: #1883ba;
 }
+.quantitee{
+    display: block;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+}

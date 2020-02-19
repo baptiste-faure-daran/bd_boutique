@@ -1,11 +1,11 @@
 <?php
 try {
-    $bdd = new PDO('mysql:host=localhost;dbname=bd_boutique', 'baptiste556', 'lemollard556');
+    $bdd = new PDO('mysql:host=localhost;dbname=bd_boutique', 'baptiste556', 'marvin');
 } catch (Exception $e) {
     die('Erreur : ' . $e->getMessage());
 }
 
-// Fonction séléction liste des produits (1 table)
+// Fonction sélection liste des produits (1 table)
 
 function select_list_of_products($bdd)
 {
@@ -13,6 +13,16 @@ function select_list_of_products($bdd)
         'SELECT * FROM articles'
     );
     return $list_of_products;
+}
+
+// Fonction sélection des produits où l'Id est coché
+function select_product_by_id($bdd, $id)
+{
+    $products_by_id = $bdd->query(
+        "SELECT * FROM articles WHERE articles.id ='$id ' "
+    );
+    return $products_by_id;
+
 }
 
 // Fonction commandes listées des 10 derniers jours (1 table)

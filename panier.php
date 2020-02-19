@@ -8,20 +8,36 @@
 </head>
 <?php
 include("fonctions_boutique.php");
+session_start();
 
-if (isset($_POST["articles"])) {
-    foreach ($_POST["articles"] as $articleSel) {
-            echo('
-            <div class="cadre article">
-            <h2 class="nom"> Vous avez choisit le <span>' . $cats[intval($articleSel)][0] . '</span> </h2>
-            <p class="prix"> Pour la somme de <span>' . $cats[intval($articleSel)][1] . '</span> euros </p><br>
-            <img src="' . $cats[intval($articleSel)][2] . '"/><br><br><br>
-        </div> 
-        ');
-
-        var_dump($_POST);
-    }
-} else {
+if (isset($_POST['articles'])) {
+    $_SESSION['panier'] = $_POST['articles'];
+}
+if (isset($_SESSION['panier'])) {
+    ?>
+    <form action="panier.php" method="post">
+        <?php
+        foreach ($_SESSION['panier'] as $articleSel) {
+            $list = $bdd->query(
+                "SELECT * FROM articles WHERE articles.id ='$articleSel ' "
+            );
+            while ($d_list_choisie = $list->fetch()) {
+                ?>
+                <div class="cadre article">
+                    <h2 class="nom"> Venez profitez du superbe tour <span><?= $d_list_choisie['name'] ?></span></h2>
+                    <p class="prix"> Pour la modique somme de <span><?= $d_list_choisie['price'] ?></span> euros </p>
+                    <img src="<?= $d_list_choisie['image'] ?>"/>
+                    <p>
+                        <input type="checkbox" name="enlever_article[]" value="<?= $d_list_choisie['id'] ?>">
+                    </p>
+                </div>
+                <?php
+            }
+        }
+        ?><input class="bouton" type="submit" value="Modifier panier">
+    </form>
+    <?php
+} else  {
 ?>
 <form action="panier.php" method="post">
     <?php
