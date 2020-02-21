@@ -13,7 +13,7 @@ session_start();
 if (isset($_POST['articles'])) {
     $_SESSION['panier'] = $_POST['articles'];
 }
-if (isset($_SESSION['panier'])) {
+if (isset($_SESSION['panier']) and (!isset($_POST['enlever_article']))) {
     ?>
     <form action="panier.php" method="post">
         <?php
@@ -37,14 +37,39 @@ if (isset($_SESSION['panier'])) {
         ?><input class="bouton" type="submit" value="Modifier panier">
     </form>
     <?php
-} else  {
+} else if (isset($_SESSION['panier']) and (isset($_POST['enlever_article']))) {
 ?>
 <form action="panier.php" method="post">
     <?php
-    afficheArticle($cats);
+    var_dump($_SESSION['panier']);
+    var_dump($_POST['enlever_article']);
+
+  //  $garder_articles = array_diff($_POST['enlever_article'],$_SESSION['panier']); // METTRE UN REVERSE IN ARRAY POUR AFFICHER TOUT CE QUI N'EST PAS SELECTIONNE
+ //    var_dump($garder_articles);
+    foreach ($_SESSION['panier'] as $id) {
+        if (!in_array($id,$_POST['enlever_article']))
+        $list = $bdd->query(
+            "SELECT * FROM articles WHERE articles.id = '$id'"
+        )->fetchAll();
+        foreach ($list as $key)
+        while ($nouveau_panier = $list->fetch()) {
+            ?>
+            <div class="cadre article">
+                <h2 class="nom"> Venez profitez du superbe tour <span><?= $nouveau_panier['name'] ?></span></h2>
+                <p class="prix"> Pour la modique somme de <span><?= $nouveau_panier['price'] ?></span> euros </p>
+                <img src="<?= $nouveau_panier['image'] ?>"/>
+                <p>
+                    <input type="checkbox" name="enlever_article[]" value="<?= $nouveau_panier['id'] ?>">
+                </p>
+            </div>
+            <?php
+        }
+    }
+
+
     ?>
-    <input class="bouton" type="submit" value="Envoyer">
-</form>
+    ?><input class="bouton" type="submit" value="Modifier panier">
+
 <?php
 
 }
