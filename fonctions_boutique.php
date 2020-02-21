@@ -107,6 +107,15 @@ function add_new_category($bdd)
     );
 }
 
+// Fonction suppression 1 stock d'article
+function delete_one_stock($bdd)
+{
+    'UPDATE `articles` 
+    SET `stock`=(`stock`-1) 
+    WHERE articles.id=3';
+
+}
+
 ?>
 
 

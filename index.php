@@ -22,7 +22,6 @@ require "fonctions_boutique.php";
 //
 
 
-
 ?>
 <!DOCTYPE html>
 <html lang="fr" xmlns="http://www.w3.org/1999/html">
@@ -38,7 +37,7 @@ require "fonctions_boutique.php";
     <h1>Lapland Safari</h1>
     <nav>
         <ul>
-            <li><a href="addArticle.php"  >Ajoutez Votre Destination</a></li>
+            <li><a href="addArticle.php">Ajoutez Votre Destination</a></li>
         </ul>
     </nav>
 </header>
@@ -47,14 +46,14 @@ $liste = $bdd->query('SELECT * FROM articles');
 ?>
 <form action="panier.php" method="post">
     <?php
-    while ($d_liste=$liste->fetch()){
+    while ($d_liste = $liste->fetch()) {
         ?>
         <div class="cadre article">
-            <h2 class="nom"> Venez profitez du superbe tour <span><?=$d_liste['name']?></span> </h2>
-            <p class="prix"> Pour la modique somme de <span><?=$d_liste['price']?></span> euros </p>
-            <img src="<?=$d_liste['image']?>"/>
+            <h2 class="nom"> Venez profitez du superbe tour <span><?= $d_liste['name'] ?></span></h2>
+            <p class="prix"> Pour la modique somme de <span><?= $d_liste['price'] ?></span> euros </p>
+            <img src="<?= $d_liste['image'] ?>"/>
             <p>
-                <input type="checkbox" name="articles[]" value=" <?=$d_liste['id']?>  " >
+                <input type="checkbox" name="articles[]" value="<?= $d_liste['id'] ?>">
 
             </p>
         </div>

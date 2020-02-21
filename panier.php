@@ -27,14 +27,18 @@ if (isset($_SESSION['panier']) and (!isset($_POST['enlever_article']))) {
                     <h2 class="nom"> Venez profitez du superbe tour <span><?= $d_list_choisie['name'] ?></span></h2>
                     <p class="prix"> Pour la modique somme de <span><?= $d_list_choisie['price'] ?></span> euros </p>
                     <img src="<?= $d_list_choisie['image'] ?>"/>
+                    <br>
+                    <p class="quantitee"> Pour combien de personnes souhaitez-vous réserver? </p>
+                    <input type="number" class="bouton" name="Nombre_personnes">
                     <p>
+                        si vous souhaitez annuler cette commande, cochez la croix
                         <input type="checkbox" name="enlever_article[]" value="<?= $d_list_choisie['id'] ?>">
                     </p>
                 </div>
                 <?php
             }
         }
-        ?><input class="bouton" type="submit" value="Modifier panier">
+        ?><input class="bouton" type="submit" value="Valider panier">
     </form>
     <?php
 } else if (isset($_SESSION['panier']) and (isset($_POST['enlever_article']))) {
@@ -45,30 +49,31 @@ if (isset($_SESSION['panier']) and (!isset($_POST['enlever_article']))) {
     var_dump($_POST['enlever_article']);
 
   //  $garder_articles = array_diff($_POST['enlever_article'],$_SESSION['panier']); // METTRE UN REVERSE IN ARRAY POUR AFFICHER TOUT CE QUI N'EST PAS SELECTIONNE
- //    var_dump($garder_articles);
+    //    var_dump($garder_articles);
     foreach ($_SESSION['panier'] as $id) {
-        if (!in_array($id,$_POST['enlever_article']))
-        $list = $bdd->query(
-            "SELECT * FROM articles WHERE articles.id = '$id'"
-        )->fetchAll();
-        foreach ($list as $key)
-        while ($nouveau_panier = $list->fetch()) {
-            ?>
-            <div class="cadre article">
-                <h2 class="nom"> Venez profitez du superbe tour <span><?= $nouveau_panier['name'] ?></span></h2>
-                <p class="prix"> Pour la modique somme de <span><?= $nouveau_panier['price'] ?></span> euros </p>
-                <img src="<?= $nouveau_panier['image'] ?>"/>
-                <p>
-                    <input type="checkbox" name="enlever_article[]" value="<?= $nouveau_panier['id'] ?>">
-                </p>
-            </div>
-            <?php
-        }
+        if (!in_array($id, $_POST['enlever_article']))
+            $list = $bdd->query(
+                "SELECT * FROM articles WHERE articles.id = '$id'"
+            )->fetchAll();
+
+        foreach ($list as $produit)   // RESTE A SUPPRIMER LES PLACES DES ARTICLES SUPPRIMES POUR NE PAS DUPPLIQUER LES RESTANTS
+//            while ($nouveau_panier = $list->fetch()) {
+                ?>
+                <div class="cadre article">
+                    <h2 class="nom"> Venez profitez du superbe tour <span><?= $produit['name'] ?></span></h2>
+                    <p class="prix"> Pour la modique somme de <span><?= $produit['price'] ?></span> euros </p>
+                    <img src="<?= $produit['image'] ?>"/>
+                    <p>
+                        <input type="checkbox" name="enlever_article[]" value="<?= $produit['id'] ?>">
+                    </p>
+                </div>
+                <?php
+//            }
     }
 
 
     ?>
-    ?><input class="bouton" type="submit" value="Modifier panier">
+    ?><input class="bouton" type="submit" value="Valider panier">
 
 <?php
 
