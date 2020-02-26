@@ -116,8 +116,24 @@ function delete_one_stock($bdd)
 
 }
 
-?>
+function displayArticles(Article $objetArticle)
+{
+    ?>
+    <div class="cadre article">
+        <h2 class="nom"> Venez profitez du superbe tour <span><?= $objetArticle->getName() ?></span></h2>
+        <p class="prix"> Pour la modique somme de <span><?= $objetArticle->getPrice() ?></span> euros </p>
+        <img src="<?= $objetArticle->getImage() ?>"/>
+        <p>
+            <input type="checkbox" name="articles[]" value="<?= $objetArticle->getId() ?>">
 
+        </p>
+    </div>
+
+    <?php
+}
+function displayCat(Article)
+
+?>
 
 
 

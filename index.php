@@ -1,6 +1,6 @@
 <?php
 require "fonctions_boutique.php";
-
+require "class.php";
 //$liste = select_list_of_products($bdd);
 //$commandes_last_10_days = orders_from_the_last_10_days($bdd);
 //$price_total=total_price_orders($bdd);
@@ -42,23 +42,14 @@ require "fonctions_boutique.php";
     </nav>
 </header>
 <?php
-$liste = $bdd->query('SELECT * FROM articles');
+$Catalogue = new Catalogue($bdd);
 ?>
 <form action="panier.php" method="post">
     <?php
-    while ($d_liste = $liste->fetch()) {
-        ?>
-        <div class="cadre article">
-            <h2 class="nom"> Venez profitez du superbe tour <span><?= $d_liste['name'] ?></span></h2>
-            <p class="prix"> Pour la modique somme de <span><?= $d_liste['price'] ?></span> euros </p>
-            <img src="<?= $d_liste['image'] ?>"/>
-            <p>
-                <input type="checkbox" name="articles[]" value="<?= $d_liste['id'] ?>">
-
-            </p>
-        </div>
-        <?php
+    foreach ($Catalogue->getCat() as $objetArticle) {
+        displayArticles($objetArticle);
     }
+
     ?>
     <input class="bouton" type="submit" value="Envoyer">
 </form>

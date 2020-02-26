@@ -1,4 +1,6 @@
 <?php
+require "fonctions_boutique.php";
+require "class.php";
 
 $error = false;
 $messagePrice = '';

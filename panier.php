@@ -7,7 +7,8 @@
     <meta name="panier.php" content="panier">
 </head>
 <?php
-include("fonctions_boutique.php");
+require "fonctions_boutique.php";
+require "class.php";
 session_start();
 
 if (isset($_POST['articles'])) {
