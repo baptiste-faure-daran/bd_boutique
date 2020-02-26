@@ -1,5 +1,6 @@
 <?php
-    class Article
+
+class Article
 {
     private $id;
     private $name;
@@ -15,7 +16,7 @@
     public function __construct($id, $name, $description, $price, $weight, $image, $stock, $for_sale, $Categories_id)
     {
         $this->id = $id;
-        $this->name =$name;
+        $this->name = $name;
         $this->description = $description;
         $this->price = $price;
         $this->weight = $weight;
@@ -123,21 +124,16 @@
     }
 }
 
-//$Voyage = new Article(1,'CCI','Bienvenue','10000',2,'false',4,1,4);
-//
-//var_dump($Voyage);
 
 class Catalogue
 {
     public $cat = [];
 
-    public function __construct($bdd)
+    public function __construct($list)
     {
-        $liste = $bdd->query('SELECT * FROM articles')->fetchAll(PDO::FETCH_ASSOC);
-        foreach ($liste as $newArticle)
-        {
-            $Article = new Article($newArticle['id'],$newArticle['name'],$newArticle['description'],$newArticle['price'],$newArticle['weight'],$newArticle['image'],$newArticle['stock'],$newArticle['for_sale'],$newArticle['Categories_id']);
-            $this->cat[]=$Article;
+        foreach ($list as $newArticle) {
+            $Article = new Article($newArticle['id'], $newArticle['name'], $newArticle['description'], $newArticle['price'], $newArticle['weight'], $newArticle['image'], $newArticle['stock'], $newArticle['for_sale'], $newArticle['Categories_id']);
+            $this->cat[] = $Article;
         }
     }
 
@@ -147,6 +143,111 @@ class Catalogue
     public function getCat()
     {
         return $this->cat;
+    }
+}
+
+class Client
+{
+    private $id;
+    private $name;
+    private $email;
+    private $adress;
+    private $postal_code;
+    private $city;
+
+    public function __construct($id, $name, $email, $adress, $postal_code, $city)
+    {
+        $this->id = $id;
+        $this->name = $name;
+        $this->email = $email;
+        $this->adress = $adress;
+        $this->postal_code = $postal_code;
+        $this->city = $city;
+    }
+
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    public function setName($name)
+    {
+        $this->name = $name;
+    }
+
+
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    public function setEmail($email)
+    {
+        $this->email = $email;
+    }
+
+
+    public function getAdress()
+    {
+        return $this->adress;
+    }
+
+    public function setAdress($adress)
+    {
+        $this->adress = $adress;
+    }
+
+
+    public function getPostalCode()
+    {
+        return $this->postal_code;
+    }
+
+    public function setPostalCode($postal_code)
+    {
+        $this->postal_code = $postal_code;
+    }
+
+
+    public function getCity()
+    {
+        return $this->city;
+    }
+
+    public function setCity($city)
+    {
+        $this->city = $city;
+    }
+
+
+}
+
+class ListeClients
+{
+    public $cat_clients = [];
+
+    public function __construct($list)
+    {
+        foreach ($list as $newClient) {
+            $client = new Client($newClient['id'], $newClient['name'], $newClient['email'], $newClient['adress'], $newClient['postal_code'], $newClient['city']);
+            $this->cat_clients[] = $client;
+        }
+    }
+
+    public function getCli()
+    {
+        return $this->cat_clients;
     }
 }
 

@@ -47,7 +47,7 @@ if (($error == false) AND (!empty($_POST))) { ?>
         <h1>Lapland Safari</h1>
         <nav>
             <ul>
-                <li><a href="index.php">Retourner à l'accueil</a></li>
+                <li><a href="catalogue.php">Retourner à l'accueil</a></li>
             </ul>
         </nav>
     </header>
@@ -64,7 +64,7 @@ if (($error == false) AND (!empty($_POST))) { ?>
         <h1>Lapland Safari</h1>
         <nav>
             <ul>
-                <li><a href="index.php">Retourner à l'accueil</a></li>
+                <li><a href="catalogue.php">Retourner à l'accueil</a></li>
             </ul>
         </nav>
     </header>

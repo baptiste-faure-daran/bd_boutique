@@ -115,6 +115,15 @@ function delete_one_stock($bdd)
     WHERE articles.id=3';
 
 }
+function get_article_liste($bdd)
+{
+    return $bdd->query('SELECT * FROM articles')->fetchAll(PDO::FETCH_ASSOC);
+}
+//todo
+// fonction sql article
+
+
+
 
 function displayArticles(Article $objetArticle)
 {
@@ -131,9 +140,48 @@ function displayArticles(Article $objetArticle)
 
     <?php
 }
-function displayCat(Article)
 
+function displayCat(Catalogue $catalogue)
+{
+    foreach ($catalogue->getCat() as $objetArticle) {
+        displayArticles($objetArticle);
+    }
+}
+
+function displayClients (Client $objetClient)
+{
 ?>
+<div class="card " style="width: 18rem;">
+    <div class="card-header">
+        Client
+    </div>
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item">Client : <?= $objetClient->getId() ?></li>
+        <li class="list-group-item">Email : <?= $objetClient->getName() ?></li>
+        <li class="list-group-item">Adresse : <?= $objetClient->getEmail() ?></li>
+        <li class="list-group-item">Code Postal : <?= $objetClient->getAdress() ?></li>
+        <li class="list-group-item">Ville : <?= $objetClient->getPostalCode() ?></li>
+        <li class="list-group-item">Ville : <?= $objetClient->getCity() ?></li>
+
+    </ul>
+</div>
+<?php
+}
+
+function displayCli (ListeClients $listeClients)
+{
+
+    foreach ($listeClients->getCli() as $objetClient)
+    {
+        displayClients($objetClient);
+    }
+}
+
+function get_client_liste($bdd)
+{
+    return $bdd->query('SELECT * FROM users')->fetchAll(PDO::FETCH_ASSOC);
+}
+
 
 
 
