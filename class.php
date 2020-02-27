@@ -132,14 +132,23 @@ class Catalogue
     public function __construct($list)
     {
         foreach ($list as $newArticle) {
-            $Article = new Article($newArticle['id'], $newArticle['name'], $newArticle['description'], $newArticle['price'], $newArticle['weight'], $newArticle['image'], $newArticle['stock'], $newArticle['for_sale'], $newArticle['Categories_id']);
+
+            if (isset($newArticle['styleChaussures'])) {
+
+                $Article = new Chaussures($newArticle['id'], $newArticle['name'], $newArticle['description'], $newArticle['price'], $newArticle['weight'], $newArticle['image'], $newArticle['stock'], $newArticle['for_sale'], $newArticle['Categories_id'], $newArticle['styleChaussures']);
+
+            } elseif (isset($newArticle['styleVetement'])) {
+                $Article = new Vetements($newArticle['id'], $newArticle['name'], $newArticle['description'], $newArticle['price'], $newArticle['weight'], $newArticle['image'], $newArticle['stock'], $newArticle['for_sale'], $newArticle['Categories_id'], $newArticle['styleVetement']);
+            } else {
+                $Article = new Article($newArticle['id'], $newArticle['name'], $newArticle['description'], $newArticle['price'], $newArticle['weight'], $newArticle['image'], $newArticle['stock'], $newArticle['for_sale'], $newArticle['Categories_id']);
+            }
             $this->cat[] = $Article;
+
         }
+
     }
 
-    /**
-     * @return array
-     */
+
     public function getCat()
     {
         return $this->cat;
@@ -251,4 +260,47 @@ class ListeClients
     }
 }
 
+class Chaussures extends Article
+{
+    protected $styleChaussures;
 
+    public function __construct($id, $name, $description, $price, $weight, $image, $stock, $for_sale, $Categories_id, $styleChaussures)
+    {
+        parent::__construct($id, $name, $description, $price, $weight, $image, $stock, $for_sale, $Categories_id);
+        $this->styleChaussures = $styleChaussures;
+    }
+
+    public function getStyleChaussures()
+    {
+        return $this->styleChaussures;
+    }
+
+    public function setStyleChaussures($styleChaussures)
+    {
+        $this->styleChaussures = $styleChaussures;
+    }
+
+}
+
+class Vetements extends Article
+{
+    protected $styleVetements;
+
+    public function __construct($id, $name, $description, $price, $weight, $image, $stock, $for_sale, $Categories_id, $styleVetements)
+    {
+        parent::__construct($id, $name, $description, $price, $weight, $image, $stock, $for_sale, $Categories_id);
+        $this->styleVetements = $styleVetements;
+    }
+
+
+    public function getStyleVetements()
+    {
+        return $this->styleVetements;
+    }
+
+    public function setStyleVetements($styleVetements)
+    {
+        $this->styleVetements = $styleVetements;
+    }
+
+}

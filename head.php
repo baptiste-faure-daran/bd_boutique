@@ -15,6 +15,9 @@
     <nav>
         <ul>
             <li><a href="addArticle.php">Ajoutez Votre Destination</a></li>
+            <li><a href="catalogue.php">Catalogue</a></li>
+            <li><a href="clients.php">Clients</a></li>
+
         </ul>
     </nav>
 </header>

@@ -2,15 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7225a881-0db5-45f0-9a3e-e1ca8bf5ed67" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/catalogue.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/clients.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/footer.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/head.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/fonctions_SQL.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/addArticle.php" beforeDir="false" afterPath="$PROJECT_DIR$/addArticle.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/catalogue.php" beforeDir="false" afterPath="$PROJECT_DIR$/catalogue.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/class.php" beforeDir="false" afterPath="$PROJECT_DIR$/class.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/clients.php" beforeDir="false" afterPath="$PROJECT_DIR$/clients.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/fonctions_boutique.php" beforeDir="false" afterPath="$PROJECT_DIR$/fonctions_boutique.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/head.php" beforeDir="false" afterPath="$PROJECT_DIR$/head.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,7 +46,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1582708903079</updated>
-      <workItem from="1582708904825" duration="17401000" />
+      <workItem from="1582708904825" duration="18104000" />
+      <workItem from="1582791233854" duration="18185000" />
     </task>
     <servers />
   </component>
@@ -55,17 +55,21 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="2673" y="237" key="#com.intellij.ide.util.MemberChooser" timestamp="1582724565043">
+    <state x="2673" y="237" key="#com.intellij.ide.util.MemberChooser" timestamp="1582795450123">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state x="2673" y="237" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1582724565043" />
-    <state x="2714" y="444" key="NewPhpFileDialog" timestamp="1582727732440">
+    <state x="2673" y="237" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1582795450123" />
+    <state x="2714" y="444" key="NewPhpFileDialog" timestamp="1582808009958">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state x="2714" y="444" key="NewPhpFileDialog/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1582727732440" />
-    <state x="2576" y="252" width="607" height="536" key="find.popup" timestamp="1582729605671">
+    <state x="2714" y="444" key="NewPhpFileDialog/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1582808009958" />
+    <state x="2576" y="345" key="com.intellij.ide.util.TipDialog" timestamp="1582791235571">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state x="2576" y="252" width="607" height="536" key="find.popup/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1582729605671" />
+    <state x="2576" y="345" key="com.intellij.ide.util.TipDialog/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1582791235571" />
+    <state x="2576" y="252" width="607" height="536" key="find.popup" timestamp="1582818429713">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="2576" y="252" width="607" height="536" key="find.popup/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1582818429713" />
   </component>
 </project>
