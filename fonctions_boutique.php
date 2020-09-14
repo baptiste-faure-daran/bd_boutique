@@ -1,6 +1,6 @@
 <?php
 try {
-    $bdd = new PDO('mysql:host=localhost;dbname=bd_boutique', 'baptiste556', 'marvin');
+    $bdd = new PDO('mysql:host=localhost;dbname=bd_boutique', 'root', '');
 } catch (Exception $e) {
     die('Erreur : ' . $e->getMessage());
 }
@@ -9,10 +9,10 @@ try {
 function get_article_liste($bdd)
 {
     return $bdd->query('
-                        SELECT articles.*, chaussures.styleChaussures, vetements.styleVetement 
+                        SELECT articles.*, chaussures.pointure, vetements.taille 
                         FROM articles 
-                        LEFT JOIN chaussures ON articles.id=chaussures.idArticle 
-                        LEFT JOIN vetements ON articles.id=vetements.idArticle
+                        LEFT JOIN chaussures ON articles.id=chaussures.articles_id 
+                        LEFT JOIN vetements ON articles.id=vetements.articles_id
                         ')->fetchAll(PDO::FETCH_ASSOC);
 }
 
